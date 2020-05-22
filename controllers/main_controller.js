@@ -12,7 +12,15 @@ controller.use((req, res, next) => {
 });
 
 controller.get('/', (req, res) => {
-    res.send('Hello world');
+    Job.find({}, (error, jobs) => {
+        if (error) {
+            console.error(error);
+        } else {
+            res.render('Index', {
+                jobs
+            })
+        }
+    })
 });
 
 controller.get('/new', (req, res) => {

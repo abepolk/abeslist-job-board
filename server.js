@@ -5,12 +5,25 @@ const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
-const db = mongoose.connection;
+require('dotenv').config();
+const expressSession = require('express-session');
+
 //___________________
 //Port
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
+
+//
+//___________________
+//Session
+//___________________
+const session = expressSession({
+    secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
+    resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
+    saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
+});
+
 
 //___________________
 //Database
@@ -20,7 +33,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/abeslist';
 
 // Connect to Mongo
 mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true});
-
+const db = mongoose.connection;
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
@@ -42,15 +55,19 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+app.use(session);
 
 
 //___________________
-// Routes
+// Controllers
 //___________________
-//localhost:3000 
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
-});
+const sessionsController = require('./controllers/sessions_controller.js');
+const usersController = require('./controllers/users_controller.js');
+const mainController = require('./controllers/main_controller.js');
+
+app.use('/sessions', sessionsController);
+app.use('/users',  usersController);
+app.use(mainController);
 
 //___________________
 //Listener

@@ -8,7 +8,7 @@ const User = require('../models/users.js')
 
 
 controller.get('/new', (req, res) => {
-  res.render('users/new')
+  res.render('users/New')
 })
 
 controller.post('/', (req, res) => {
@@ -17,7 +17,7 @@ controller.post('/', (req, res) => {
     if (error) {
       console.error(error);
     } else {
-    console.log('user is created', user)
+    console.log('User is created', user)
     res.redirect('/sessions/new')
   }
   })

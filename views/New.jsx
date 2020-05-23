@@ -11,7 +11,7 @@ class New extends React.Component {
                 Location: <input type="text" name="location" /><br/>
                     Job description: <input type="textarea" name="description" /><br/>
                     Skills (separate by semicolons): <input type="text" name="skills" /><br/>
-                    <input type="submit" />
+                    <input type="submit" name="" value="Create New User" />
                 </form>
             </>
         )

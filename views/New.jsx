@@ -1,9 +1,10 @@
 const React = require('react');
+const Default = require('./Default.jsx')
 
 class New extends React.Component {
     render() {
         return (
-            <>
+            <Default>
                 <h1>New Job Position</h1>
                 <form action="/" method="POST">
                 Job title: <input type="text" name="title" /><br/>
@@ -13,7 +14,7 @@ class New extends React.Component {
                     Skills (separate by semicolons): <input type="text" name="skills" /><br/>
                     <input type="submit" name="" value="Create New User" />
                 </form>
-            </>
+            </Default>
         )
     }
 }

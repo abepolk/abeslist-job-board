@@ -1,9 +1,10 @@
 const React = require('react');
+const Default = require('./Default.jsx')
 
 class Index extends React.Component {
     render() {
         return (
-            <>
+            <Default>
                 <h1>Abe's List</h1>
                 {/*<form action="/sessions/?_method=delete" method="post">
                     <input type={this.props.username ? "submit" : "hidden"} value="Logout" />
@@ -21,7 +22,7 @@ class Index extends React.Component {
                         );
                     })}
                 </ul>
-            </>
+            </Default>
         );
     }
 }

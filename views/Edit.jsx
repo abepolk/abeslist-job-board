@@ -1,10 +1,11 @@
 const React = require('react');
+const Default = require('./Default.jsx')
 
 class Edit extends React.Component {
     render() {
         const {job, canEdit} = this.props;
         return (
-            <>
+            <Default>
                 <h1>Update {job.title}</h1>
                 <form action={`/${job._id}?_method=PUT`} method="POST">
                 Title: <input type="text" name="title" value={job.title} />
@@ -14,7 +15,7 @@ class Edit extends React.Component {
                 Skills required (separated by semicolons): <input type="text" name="skills" value={job.skills.join(';')} />
                 <input type="submit" name="" value="Update job" />
                 </form>
-            </>
+            </Default>
         )
     }
 }

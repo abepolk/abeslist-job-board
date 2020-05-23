@@ -1,4 +1,5 @@
 const React = require('react');
+const Default = require('./Default.jsx')
 
 const EditDelete = (props) => {
     if (!props.canEdit) {
@@ -18,7 +19,7 @@ class Show extends React.Component {
     render() {
         const {job, canEdit} = this.props;
         return (
-            <>
+            <Default>
                 <h1>{job.title}</h1>
                                 <h5>{job.location}</h5>
                                 <h5>{job.company}</h5>
@@ -32,7 +33,7 @@ class Show extends React.Component {
                                     )
                                 })}</ul>
                                 <EditDelete canEdit={canEdit} id={job._id} />
-            </>
+            </Default>
         )
     }
 }

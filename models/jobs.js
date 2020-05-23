@@ -5,7 +5,8 @@ const jobSchema = new Schema({
     company: {type: String, required: true},
     location: {type: String, required: true},
     description: {type: String, required: true},
-    skills: [String]
+    skills: [String],
+    owner: {type: String, required: true}
 }, 
 // May be used for job expiry
 {timestamps: true});

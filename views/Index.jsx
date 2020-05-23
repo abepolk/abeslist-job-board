@@ -2,7 +2,6 @@ const React = require('react');
 
 class Index extends React.Component {
     render() {
-        console.log(this.props)
         return (
             <>
                 <h1>Abe's List</h1>
@@ -19,11 +18,11 @@ class Index extends React.Component {
                                 <p>{job.company}</p>
                                 <p>Posted: {job.createdAt.toString()}</p>
                             </li>
-                        )
+                        );
                     })}
                 </ul>
             </>
-        )
+        );
     }
 }
 

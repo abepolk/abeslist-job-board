@@ -56,6 +56,13 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 app.use(session);
+app.use((req, res, next) => {
+    if (!req.session.authType) {
+        console.log('Establishing authType in session');
+        req.session.authType = 'none'
+    }
+    next();
+});
 
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());

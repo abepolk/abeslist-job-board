@@ -3,6 +3,9 @@ const express = require('express');
 const controller = express.Router();
 const Job = require('../models/jobs.js');
 
+/*
+Comment out because login is no longer required for Index and Show
+
 controller.use((req, res, next) => {
     if (req.session.username) {
         return next();
@@ -10,13 +13,17 @@ controller.use((req, res, next) => {
         res.redirect('/sessions/new');
     }
 });
+*/
 
 controller.get('/', (req, res) => {
     Job.find({}, (error, jobs) => {
         if (error) {
             console.error(error);
         } else {
-            res.render('Index', {jobs})
+            res.render('Index', {
+                jobs,
+                authType: req.session.authType
+            })
         }
     })
 });

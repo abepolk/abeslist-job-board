@@ -22,11 +22,24 @@ controller.get('/', (req, res) => {
         } else {
             res.render('Index', {
                 jobs,
-                authType: req.session.authType
+                authType: req.session.authType,
+                username: req.session.username
             })
         }
     })
 });
+
+controller.get('/myjobs', (req, res) => {
+    Job.find({owner: req.session.username}, (error, jobs) => {
+        if (error) {
+            console.error(error);
+        } else {
+            res.render('MyJobs', {
+                jobs
+            })
+        }
+    })
+})
 
 controller.get('/new', (req, res) => {
     res.render('New');

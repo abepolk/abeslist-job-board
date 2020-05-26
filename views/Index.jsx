@@ -1,11 +1,18 @@
 const React = require('react');
 const Default = require('./Default.jsx')
 
-const EmployerOptions = (props) => {
+const UserOptions = (props) => {
     if (props.authType === 'employer') {
         return (
             <>
-                <a href='/new'>Add Entry</a><a href='/myjobs'>View my open positions</a>
+                <a href='/new'>Add entry</a><br/>
+                <a href='/myjobs'>View my open positions</a>
+            </>
+        );
+    } else if (props.authType === 'seeker') {
+        return (
+            <>
+                <a href='/resume'>Add or update resume and skills</a>
             </>
         );
     } else {
@@ -13,15 +20,18 @@ const EmployerOptions = (props) => {
     }
 };
 
-const EditDeleteJobOptions = (props) => {
+const OwnerJobOptions = (props) => {
     if (props.authType === 'employer' && props.username === props.job.owner) {
         return (
             <>
-                <form action={`/edit/${job._id}`}>
+                <form action={`/edit/${props.job._id}`}>
                     <input type="submit" value="Edit listing" />
                 </form>
-                <form action={`/${job._id}?_method=delete`} method="post">
+                <form action={`/${props.job._id}?_method=delete`} method="post">
                     <input type="submit" value="Log out" />
+                </form>
+                <form action={`/showApplications/${props.job._id}`}>
+                    <input type="submit" value="View applications" />
                 </form>
             </>
         )
@@ -36,7 +46,7 @@ class Index extends React.Component {
         return (
             <Default authType={authType}>
                 <h1>Abe's List</h1>
-                <nav><EmployerOptions authType={authType} /></nav>
+                <nav><UserOptions authType={authType} /></nav>
                 <ul>
                     {jobs.map((job, index) => {
                         return (
@@ -45,7 +55,7 @@ class Index extends React.Component {
                                 <p>{job.location}</p>
                                 <p>{job.company}</p>
                                 <p>Posted: {job.createdAt.toString()}</p>
-                                <EditDeleteJobOptions authType={authType} username={username} job={job}/>
+                                <OwnerJobOptions authType={authType} username={username} job={job}/>
                             </li>
                         );
                     })}

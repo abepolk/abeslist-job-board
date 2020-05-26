@@ -6,7 +6,13 @@ const jobSchema = new Schema({
     location: {type: String, required: true},
     description: {type: String, required: true},
     skills: [String],
-    owner: {type: String, required: true}
+    owner: {type: String, required: true},
+    applications: [{ // Not sure you can do this with arrays
+        resume: {type: String, required: true},
+        coverLetterUrl: String,
+        coverLetterText: String,
+        skills: [String]
+    }]
 }, 
 // May be used for job expiry
 {timestamps: true});

@@ -7,7 +7,10 @@ class MyJobs extends React.Component {
         return (
             <Default authType="employer">
                 <h1>My open positions</h1>
-                <nav><a href='/new'>Add Entry</a><a href='/'>View all open positions</a></nav>
+                <nav>
+                    <a href='/new'>Add Entry</a><br/>
+                    <a href='/'>View all open positions</a>
+                </nav>
                 <ul>
                     {jobs.map((job, index) => {
                         return (
@@ -16,7 +19,6 @@ class MyJobs extends React.Component {
                                 <p>{job.location}</p>
                                 <p>{job.company}</p>
                                 <p>Posted: {job.createdAt.toString()}</p>
-                                {/*These need to be abstracted if you use them outsdie of here and INdex*/}
                                 <form action={`/edit/${job._id}`}>
                                     <input type="submit" value="Edit listing" />
                                 </form>

@@ -29,7 +29,7 @@ class ShowApplications extends React.Component {
                         return (
                             <li key={index}>
                                 <h4>{application.numMatchingSkills} matching skills</h4>
-                                <a href={application.resume}>Resume</a>
+                                <a href={application.resume}>Resume</a><br/>
                                 <CoverLetter application={application} />
                                 <p>Skills: {application.skills.join(', ')}</p>
                             </li>

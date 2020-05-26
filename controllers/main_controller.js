@@ -115,7 +115,7 @@ controller.get('/showApplications/:id', (req, res) => {
         } else if (req.session.username !== job.owner) {
             res.send('Unauthorized'); // send HTTP 401?
         }
-        const matchingSkillsNums = job.applications.forEach((application) => {
+        job.applications.forEach((application) => {
             application.numMatchingSkills = application.skills.filter((skill) => {
                 return job.skills.includes(skill)
             }).length;

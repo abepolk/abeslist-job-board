@@ -12,7 +12,7 @@ class Apply extends React.Component {
                     Link to resume (Google Drive, Dropbox, etc.): <input type="text" name="resume" value={seeker.resume}/><br/>
                     Link to cover letter: (or leave blank and type text below) <input type="text" name="coverLetterUrl" /><br/>
                     Cover letter: <input type="textarea" name="coverLetterText" />
-                    Relevant skills: <input type="text" name="skills" value={seeker.skills.join('; ')} />
+                    Relevant skills (separated by semicolons): <input type="text" name="skills" value={seeker.skills.join('; ')} />
                     <input type="submit" value="Submit Application" />
                 </form>
             </Default>

@@ -28,7 +28,7 @@ const OwnerJobOptions = (props) => {
                     <input type="submit" value="Edit listing" />
                 </form>
                 <form action={`/${props.job._id}?_method=delete`} method="post">
-                    <input type="submit" value="Log out" />
+                    <input type="submit" value="Delete" />
                 </form>
                 <form action={`/showApplications/${props.job._id}`}>
                     <input type="submit" value="View applications" />
@@ -46,15 +46,18 @@ class Index extends React.Component {
         return (
             <Default authType={authType}>
                 <h1>Abe's List</h1>
+                <h3>Jobs where you need 'em, when you need 'em</h3>
                 <nav><UserOptions authType={authType} /></nav>
                 <ul>
                     {jobs.map((job, index) => {
                         return (
                             <li key={index}>
-                                <h3><a href={`/info/${job._id}`}>{job.title}</a></h3>
-                                <p>{job.location}</p>
-                                <p>{job.company}</p>
-                                <p>Posted: {job.createdAt.toString()}</p>
+                                <a href={`/info/${job._id}`}>
+                                    <h3>{job.title}</h3>
+                                    <p>{job.location}</p>
+                                    <p>{job.company}</p>
+                                    <p>Posted: {job.createdAt.toString()}</p>
+                                </a>
                                 <OwnerJobOptions authType={authType} username={username} job={job}/>
                             </li>
                         );

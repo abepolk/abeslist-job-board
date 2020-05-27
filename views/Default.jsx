@@ -27,6 +27,7 @@ class Default extends React.Component {
             <html>
                 <head>
                     <title>AbesList</title>
+                    <link rel="stylesheet" href="/css/styles.css" />
                 </head>
                 <body>
                     <header>

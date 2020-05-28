@@ -23,17 +23,17 @@ const UserOptions = (props) => {
 const OwnerJobOptions = (props) => {
     if (props.authType === 'employer' && props.username === props.job.owner) {
         return (
-            <>
+            <div class="owner-job-options">
                 <form action={`/edit/${props.job._id}`}>
                     <input type="submit" value="Edit listing" />
                 </form>
                 <form action={`/${props.job._id}?_method=delete`} method="post">
-                    <input type="submit" value="Delete" />
+                    <input type="submit" value="Remove" />
                 </form>
                 <form action={`/showApplications/${props.job._id}`}>
                     <input type="submit" value="View applications" />
                 </form>
-            </>
+            </div>
         )
     } else {
         return null;

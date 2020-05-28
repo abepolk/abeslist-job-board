@@ -11,7 +11,7 @@ class NewUser extends React.Component {
                 <body>
                     <div id="main-container">
                         <h1>New User</h1>
-                        <div id="form-container">
+                        <div class="form-container">
                         <form action="/users/" method="POST">
                             <label for="username">Username:</label>
                             <input type="text" name="username" />
@@ -19,7 +19,7 @@ class NewUser extends React.Component {
                             <label for="password">Password:</label>
                             <input type="password" name="password" />
                             <br />
-                            <input id="create-user-button" type="submit" value="Create User" />
+                            <input class="form-submit-button" type="submit" value="Create User" />
                         </form>
                         </div>
                     </div>

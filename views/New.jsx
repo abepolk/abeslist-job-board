@@ -6,7 +6,7 @@ class New extends React.Component {
         return (
             <Default authType="employer">
                 <h1>New Job Position</h1>
-                <div id="form-container">
+                <div class="form-container" id="form-container-new">
                     <form action="/" method="POST">
                         <label for="title">Job title:</label>
                         <input type="text" name="title" /><br/>
@@ -17,7 +17,7 @@ class New extends React.Component {
                         <label for="description">Job description:</label><input type="textarea" name="description" /><br/>
                         <label for="skills">Skills (separate by semicolons):</label>
                         <input type="text" name="skills" /><br/>
-                        <input type="submit" name="" value="Create New Job" />
+                        <input class="shadow-box form-submit-button" type="submit" name="" value="Create New Job" />
                     </form>
                 </div>
             </Default>

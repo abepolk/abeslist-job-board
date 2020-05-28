@@ -6,11 +6,15 @@ class Resume extends React.Component {
         return (
             <Default authType="seeker">
                 <h1>Add resume and skills</h1>
-                <form action="/resume" method="POST">
-                    Link to resume (Google Drive, Dropbox, etc.) <input type="text" name="resume" /><br/>
-                    Skills (separate by semicolons): <input type="text" name="skills" /><br/>
-                    <input type="submit" name="" value="Submit resume and skills" />
-                </form>
+                <div class="form-container" id="form-container-resume">
+                    <form action="/resume" method="POST">
+                        <label for="resume">Link to resume (Google Drive, Dropbox, etc.)</label>
+                        <input type="text" name="resume" /><br/>
+                        <label for="skills">Skills (separate by semicolons):</label>
+                        <input type="text" name="skills" /><br/>
+                        <input class="shadow-box form-submit-button" type="submit" name="" value="Submit resume and skills" />
+                    </form>
+                </div>
             </Default>
         )
     }

@@ -20,12 +20,14 @@ class MyJobs extends React.Component {
                                 <h3 class="company-name">{job.company}</h3>
                                 <h3 class="location">{job.location}</h3>
                                 <p class="date">Posted: {postedDate}</p>
-                                <form action={`/edit/${job._id}`}>
-                                    <input type="submit" value="Edit listing" />
-                                </form>
-                                <form action={`/${job._id}?_method=delete`} method="post">
-                                    <input type="submit" value="Log out" />
-                                </form>
+                                <div class="owner-job-options">
+                                    <form action={`/edit/${job._id}`}>
+                                        <input type="submit" value="Edit listing" />
+                                    </form>
+                                    <form action={`/${job._id}?_method=delete`} method="post">
+                                        <input type="submit" value="Log out" />
+                                    </form>
+                                </div>
                             </li>
                         );
                     })}

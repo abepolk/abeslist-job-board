@@ -16,7 +16,7 @@ class Login extends React.Component {
                 <body>
                     <div id="main-container">
                         <h1>{authType === 'employer' ? 'Employer' : 'Job Seeker'} Log in</h1>
-                        <div id="form-container">
+                        <div class="form-container">
                             <form id="login-form" action="/sessions/" method="POST">
                                 <label for="username">Username:</label>
                                 <input type="text" name="username" /><br/>

@@ -6,7 +6,11 @@ const ApplyButton = (props) => {
         return null;
     }
     return (
-        <a href={`/apply/${props.id}`}>Apply now</a>
+        <div class="owner-job-options">
+            <form action={`/apply/${props.id}`}>
+                <input type="submit" value="Apply now" />
+            </form>
+        </div>
     )
 }
 
@@ -15,11 +19,15 @@ const EditDelete = (props) => {
         return null;
     }
     return (
-        <div>
-            <a href={`/showApplications/${props.id}`}>View applications</a><br/>
-            <a href={`/edit/${props.id}`}>Edit this listing</a>
+        <div class="owner-job-options">
+            <form action={`/showApplications/${props.id}`}>
+                <input type="submit" value="View applications" />
+            </form>
+            <form action={`/edit/${props.id}`}>
+                <input type="submit" value="Edit this listing" />
+            </form>
             <form action={`/${props.id}?_method=DELETE`} method="post">
-                <input type="submit" value="delete" />
+                <input type="submit" value="Remove" />
             </form>
         </div>
     );
@@ -34,14 +42,14 @@ class Show extends React.Component {
                 <div id="user-options-bar">
                     <a class="user-option" href="/">View all jobs</a>
                 </div>
-                    <div class="shadow-box">
+                    <div id="show-container" class="shadow-box">
                         <h1>{job.title}</h1>
                         <h3 class="company-name">{job.company}</h3>
                         <h3 class="location">{job.location}</h3>
                         <h5>Posted: {postedDate}</h5>
-                        <h4>Job Description:</h4>
                         <div id="description-skills-container">
-                            <p>{job.description}</p>
+                            <h4>Job Description:</h4>
+                            <p>{job.description}</p><br/>
                             <h4>Skills required:</h4>
                             <ul id="skills-list">
                                 {job.skills.map((skill, index) => {
@@ -52,9 +60,9 @@ class Show extends React.Component {
                                 )}
                             </ul>
                         </div>
+                        <ApplyButton id={job._id} canApply={canApply} />
+                        <EditDelete isOwner={isOwner} id={job._id} />
                     </div>
-                    <ApplyButton id={job._id} canApply={canApply} />
-                    <EditDelete isOwner={isOwner} id={job._id} />
             </Default>
         )
     }

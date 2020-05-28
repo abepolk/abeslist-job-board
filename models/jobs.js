@@ -7,7 +7,8 @@ const jobSchema = new Schema({
     description: {type: String, required: true},
     skills: [String],
     owner: {type: String, required: true},
-    applications: [{ // Not sure you can do this with arrays
+    applications: [{
+        name: {type: String, required: true},
         resume: {type: String, required: true},
         coverLetterUrl: String,
         coverLetterText: String,

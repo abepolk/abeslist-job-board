@@ -165,3 +165,12 @@ header {
 .date {
     text-align: center;
 }
+
+#description-skills-container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#skills-list {
+    list-style-type: disc;
+}

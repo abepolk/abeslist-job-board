@@ -5,14 +5,14 @@ const UserOptions = (props) => {
     if (props.authType === 'employer') {
         return (
             <>
-                <a href='/new'>Add entry</a><br/>
-                <a href='/myjobs'>View my open positions</a>
+                <a class="user-option" href='/new'>Add entry</a><br/>
+                <a class="user-option" href='/myjobs'>View my open positions</a>
             </>
         );
     } else if (props.authType === 'seeker') {
         return (
             <>
-                <a href='/resume'>Add or update resume and skills</a>
+                <a class="user-option" href='/resume'>Add or update resume and skills</a>
             </>
         );
     } else {
@@ -44,19 +44,20 @@ class Index extends React.Component {
     render() {
         const {authType, jobs, username} = this.props;
         return (
-            <Default authType={authType}>
-                <h1>Abe's List</h1>
+            <Default authType={authType} additionalCss="Index.css">
+                <h1 id="title">Abe's List</h1>
                 <h3>Jobs where you need 'em, when you need 'em</h3>
-                <nav><UserOptions authType={authType} /></nav>
+                <div id="user-options-bar"><UserOptions authType={authType} /></div>
                 <ul>
                     {jobs.map((job, index) => {
+                        const postedDate = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric' }).format(job.createdAt);
                         return (
-                            <li key={index}>
+                            <li class="shadow-box job-listing" key={index}>
                                 <a href={`/info/${job._id}`}>
                                     <h3>{job.title}</h3>
-                                    <p>{job.location}</p>
-                                    <p>{job.company}</p>
-                                    <p>Posted: {job.createdAt.toString()}</p>
+                                    <h3 class="company-name">{job.company}</h3>
+                                    <h3 class="location">{job.location}</h3>
+                                    <p class="date">Posted: {postedDate}</p>
                                 </a>
                                 <OwnerJobOptions authType={authType} username={username} job={job}/>
                             </li>

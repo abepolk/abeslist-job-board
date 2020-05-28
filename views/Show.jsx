@@ -28,24 +28,27 @@ const EditDelete = (props) => {
 class Show extends React.Component {
     render() {
         const {job, isOwner, canApply, authType} = this.props;
+        const postedDate = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric' }).format(job.createdAt);
         return (
-            <Default authType={authType}>
+            <Default authType={authType} additionalCss="Show.css">
                 <a href="/">View all jobs</a>
-                <h1>{job.title}</h1>
-                    <h5>{job.location}</h5>
-                    <h5>{job.company}</h5>
-                    <h5>Posted: {job.createdAt.toString()}</h5>
-                    <h4>Job Description:</h4>
-                    <p>{job.description}</p>
-                    <h4>Skills required</h4>
-                    <ul>
-                        {job.skills.map((skill, index) => {
-                            return (
-                                <li key={index}>{skill}</li>
-                            )
-                            }
-                        )}
-                    </ul>
+                    <div class="shadow-box">
+                        <h1>{job.title}</h1>
+                        <h3 class="company-name">{job.company}</h3>
+                        <h3 class="location">{job.location}</h3>
+                        <h5>Posted: {postedDate}</h5>
+                        <h4>Job Description:</h4>
+                        <p>{job.description}</p>
+                        <h4>Skills required</h4>
+                        <ul>
+                            {job.skills.map((skill, index) => {
+                                return (
+                                    <li key={index}>{skill}</li>
+                                )
+                                }
+                            )}
+                        </ul>
+                    </div>
                     <ApplyButton id={job._id} canApply={canApply} />
                     <EditDelete isOwner={isOwner} id={job._id} />
             </Default>

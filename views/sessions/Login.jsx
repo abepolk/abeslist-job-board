@@ -8,19 +8,29 @@ class Login extends React.Component {
         }
         const authTypeString = authType === 'employer' ? 'employer' : 'job seeker'
         return (
-            <div>
-                <h1>{authType === 'employer' ? 'Employer' : 'Job Seeker'} Log in</h1>
-                <form action="/sessions/" method="POST">
-                    username: <input type="text" name="username" />
-                    <br />
-                    password: <input type="password" name="password" />
-                    <br />
-                    <input type="submit" name="" value="Log in" />
-                </form>
-                <form action="/users/new/">
-                    <input type="submit" name="" value={`Register new ${authTypeString}`} />
-                </form>
-            </div>
+            <html>
+                <head>
+                    <title>AbesList</title>
+                    <link rel="stylesheet" href="/css/styles.css" />
+                </head>
+                <body>
+                    <div id="main-container">
+                        <h1>{authType === 'employer' ? 'Employer' : 'Job Seeker'} Log in</h1>
+                        <div id="form-container">
+                            <form id="login-form" action="/sessions/" method="POST">
+                                <label for="username">Username:</label>
+                                <input type="text" name="username" /><br/>
+                                <label for="password">Password:</label>
+                                <input type="password" name="password" /><br/>
+                                <input class="shadow-box" type="submit" name="" value="Log in" />
+                            </form>
+                            <form action="/users/new/">
+                                <input id="register-button" class="shadow-box" type="submit" name="" value="Register" />
+                            </form>
+                        </div>
+                    </div>
+                </body>
+            </html>
         );
     }
 }
